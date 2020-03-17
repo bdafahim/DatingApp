@@ -58,3 +58,11 @@
 /home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/e_sqlite3.dll
 /home/bdafahim/DatingApp/DatingApp.API/obj/Debug/netcoreapp3.1/DatingApp.API.csproj.CopyComplete
 /home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
+/home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+/home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+/home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
+/home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+/home/bdafahim/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
