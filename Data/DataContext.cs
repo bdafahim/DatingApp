@@ -1,3 +1,4 @@
+using System;
 using DatingApp.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,6 @@ namespace DatingApp.API.Data
         public DbSet<Photo> Photos { get; set; }
 
         public DbSet<Post> Posts { get; set; }
+
     }
 }
