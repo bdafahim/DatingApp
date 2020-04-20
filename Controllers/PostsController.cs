@@ -3,12 +3,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DatingApp.API.Data;
 using DatingApp.API.Dtos;
+using DatingApp.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
@@ -21,6 +22,18 @@ namespace DatingApp.API.Controllers
             _repo = repo;
 
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePost(PostForCreationDto postForCreationDto)
+        {
+            var status = _mapper.Map<Post>(postForCreationDto);
+            _repo.Add(status);
+
+            return StatusCode(201);
+
+        }
+
 
 
 
