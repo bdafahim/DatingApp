@@ -13,6 +13,7 @@ namespace DatingApp.API.Data
         public DbSet<Photo> Photos { get; set; }
 
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
     }
 }
