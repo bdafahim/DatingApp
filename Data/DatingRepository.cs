@@ -45,6 +45,12 @@ namespace DatingApp.API.Data
             return photo;
         }
 
+        public async Task<Post> GetPost(int id)
+        {
+            var post = await _context.Posts.FirstOrDefaultAsync(p => p.Id == id);
+            return post;
+        }
+
         public async Task<IEnumerable<Post>> GetPosts()
         {
             var posts = await _context.Posts.ToListAsync();

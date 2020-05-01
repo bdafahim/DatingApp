@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DatingApp.API.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/users/{userId}/posts")]
     [ApiController]
     public class PostsController : ControllerBase
     {
@@ -26,15 +26,22 @@ namespace DatingApp.API.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreatePost(PostForCreationDto postForCreationDto)
+        public async Task<IActionResult> CreatePost(PostForCreationDto postForCreationDto, int userId)
         {
-            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
             var status = _mapper.Map<Post>(postForCreationDto);
             _repo.Add(status);
-            await _repo.SaveAll();
 
-            return StatusCode(201);
+            var statusToReturn = _mapper.Map<PostForReturnDto>(status);
+
+            if (await _repo.SaveAll())
+            {
+
+                return CreatedAtRoute("GetPost", new { userId = userId, id = status.Id },
+                 statusToReturn);
+            }
+            return BadRequest("Failed to like user");
 
         }
 
@@ -42,8 +49,18 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> GetPosts()
         {
             var posts = await _repo.GetPosts();
-            // var postToReturn = _mapper.Map<PostForCreationDto>(posts);
+            // var postToReturn = _mapper.Map<PostForReturnDto>(posts);
+
             return Ok(posts);
+        }
+
+        [HttpGet("{id}", Name = "GetPost")]
+
+        public async Task<IActionResult> GetPost(int id)
+        {
+            var post = await _repo.GetPost(id);
+            var postToReturn = _mapper.Map<PostForReturnDto>(post);
+            return Ok(postToReturn);
         }
 
     }
