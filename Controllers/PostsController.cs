@@ -38,16 +38,13 @@ namespace DatingApp.API.Controllers
 
         }
 
-
-
-
-        // [HttpGet]
-        // public async Task<IActionResult> GetPosts()
-        // {
-        //     var posts = _repo.GetPosts();
-        //     var postToReturn = _mapper.Map<IEnumerable<PostForCreationDto>>(posts);
-        //     return Ok(postToReturn);
-        // }
+        [HttpGet]
+        public async Task<IActionResult> GetPosts()
+        {
+            var posts = await _repo.GetPosts();
+            // var postToReturn = _mapper.Map<PostForCreationDto>(posts);
+            return Ok(posts);
+        }
 
     }
 }
