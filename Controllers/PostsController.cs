@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using DatingApp.API.Data;
@@ -9,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
@@ -27,8 +28,11 @@ namespace DatingApp.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePost(PostForCreationDto postForCreationDto)
         {
+            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
             var status = _mapper.Map<Post>(postForCreationDto);
             _repo.Add(status);
+            await _repo.SaveAll();
 
             return StatusCode(201);
 
