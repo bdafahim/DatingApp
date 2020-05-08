@@ -50,6 +50,7 @@ namespace DatingApp.API.Controllers
         {
             var posts = await _repo.GetPosts();
             // var postToReturn = _mapper.Map<PostForReturnDto>(posts);
+            //_mapper.Map<Source>(destination)
 
             return Ok(posts);
         }
